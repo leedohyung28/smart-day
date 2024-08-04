@@ -5,13 +5,11 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 dotenv.config();
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({ origin: [process.env.CLIENT_URL, process.env.SERVER_URL], credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
-});
+app.listen(process.env.PORT || 9001);
 
 const usersRouter = require("./routes/users");
 const schedulesRouter = require("./routes/schedules");
@@ -22,4 +20,3 @@ app.use("/users", usersRouter);
 app.use("/favorites", favoritesRouter);
 app.use("/schedules", schedulesRouter);
 app.use("/todos", todosRouter);
-app.use(express.urlencoded({ extended: true }));
