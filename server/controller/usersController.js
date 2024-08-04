@@ -93,10 +93,10 @@ const login = (req, res) => {
         },
       );
 
-      res.cookie("access_token", access_token, {
+      es.cookie("access_token", access_token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+        secure: true,
+        sameSite: "None",
       });
 
       return res.status(StatusCodes.OK).json(results);
