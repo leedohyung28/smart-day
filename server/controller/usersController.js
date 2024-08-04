@@ -95,7 +95,7 @@ const login = (req, res) => {
 
       res.cookie("access_token", access_token, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "None",
       });
 
