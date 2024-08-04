@@ -93,7 +93,7 @@ const login = (req, res) => {
         },
       );
 
-      es.cookie("access_token", access_token, {
+      res.cookie("access_token", access_token, {
         httpOnly: true,
         secure: true,
         sameSite: "None",
