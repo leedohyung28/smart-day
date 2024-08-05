@@ -15,14 +15,16 @@ export const useFetchThreeDayWeathers = () => {
       const result = await weatherApiFetchTest(currentLocation);
       const weatherData: Record<string, number> = {};
 
-      result.forEach((value, index) => {
-        const date = new Date(today);
-        date.setDate(date.getDate() + index);
-        const formattedDate = getFormattedDate(date);
-        weatherData[formattedDate] = Number(value);
-      });
+      if (result) {
+        result.forEach((value, index) => {
+          const date = new Date(today);
+          date.setDate(date.getDate() + index);
+          const formattedDate = getFormattedDate(date);
+          weatherData[formattedDate] = Number(value);
+        });
 
-      actions.setWeatherData(weatherData);
+        actions.setWeatherData(weatherData);
+      }
     } catch (error) {
       console.error("오류 발생:", error);
     }
