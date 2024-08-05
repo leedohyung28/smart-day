@@ -29,7 +29,7 @@ import {
   TiWeatherWindy,
   TiWeatherWindyCloudy,
 } from "react-icons/ti";
-import { MdOutlineQuestionMark } from "react-icons/md";
+import { TbCloudQuestion } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import useCalendarPageStore from "../../../store/calendarStore";
 import Todo from "./Todo/Todo";
@@ -162,7 +162,7 @@ const CalendarComponent = () => {
             {weatherData && typeof weatherData[formattedDate] !== "undefined" ? (
               weatherIcons[weatherData[formattedDate]]
             ) : (
-              <MdOutlineQuestionMark />
+              <TbCloudQuestion />
             )}
           </div>
         );
@@ -172,7 +172,7 @@ const CalendarComponent = () => {
             {weatherData && typeof weatherData[formattedDate] !== "undefined" ? (
               weatherIcons[weatherData[formattedDate]]
             ) : (
-              <MdOutlineQuestionMark />
+              <TbCloudQuestion />
             )}
           </div>
         );
@@ -182,7 +182,7 @@ const CalendarComponent = () => {
             {weatherData && typeof weatherData[formattedDate] !== "undefined" ? (
               weatherIcons[weatherData[formattedDate]]
             ) : (
-              <MdOutlineQuestionMark />
+              <TbCloudQuestion />
             )}
           </div>
         );

@@ -39,7 +39,7 @@ import {
   TiWeatherWindy,
   TiWeatherWindyCloudy,
 } from "react-icons/ti";
-import { MdOutlineQuestionMark } from "react-icons/md";
+import { TbCloudQuestion } from "react-icons/tb";
 import { useWeatherStore } from "../../../store/weatherStore";
 
 const weatherIcons = [
@@ -71,7 +71,7 @@ const DayModal = () => {
 
   const { setDueDate } = useTodoScheduleStore();
   const weatherData = useWeatherStore((state) => state.weatherData);
-  const [weatherIcon, setWeatherIcon] = useState(<MdOutlineQuestionMark />);
+  const [weatherIcon, setWeatherIcon] = useState(<TbCloudQuestion />);
 
   const getDayOfWeek = (date: Date) => {
     const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -106,7 +106,7 @@ const DayModal = () => {
     if (Object.prototype.hasOwnProperty.call(weatherData, dateString)) {
       setWeatherIcon(weatherIcons[weatherData[dateString]]);
     } else {
-      setWeatherIcon(<MdOutlineQuestionMark />);
+      setWeatherIcon(<TbCloudQuestion />);
     }
   }, [date]);
 

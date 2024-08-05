@@ -27,7 +27,7 @@ import { useWeatherStore } from "../../../store/weatherStore";
 import { useFetchThreeDayWeathers } from "../../../apis/setThreeDayWeathersAPI";
 import { useUserInfoStore } from "../../../store/userInfoStore";
 import { useEffect } from "react";
-import { MdOutlineQuestionMark } from "react-icons/md";
+import { TbCloudQuestion } from "react-icons/tb";
 
 type TTask = {
   id?: number;
@@ -91,7 +91,7 @@ const List = ({ listIndex, tasks }: TaskList) => {
     const formattedDate = targetDate.format("YYYY-MM-DD");
 
     if (!weatherData || typeof weatherData[formattedDate] === "undefined") {
-      return <MdOutlineQuestionMark />;
+      return <TbCloudQuestion />;
     }
 
     return weatherIcons[weatherData[formattedDate]];

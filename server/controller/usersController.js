@@ -42,7 +42,7 @@ const join = (req, res) => {
 
   conn.query(sql, values, (err, results) => {
     if (err) {
-      console.log(err);
+      console.error(err);
       return res.status(StatusCodes.BAD_REQUEST).end();
     }
 
@@ -61,7 +61,7 @@ const login = (req, res) => {
 
   conn.query(sql, email, (err, results) => {
     if (err) {
-      console.log(err);
+      console.error(err);
       return res.status(StatusCodes.BAD_REQUEST).end();
     }
 
