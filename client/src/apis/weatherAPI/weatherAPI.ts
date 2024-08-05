@@ -78,7 +78,6 @@ const getShortWeather = async (currentLocation: string) => {
 };
 
 export const weatherApiFetchTest = async (currentLocation: string) => {
-  console.log(currentLocation);
   const res = await getShortWeather(currentLocation);
   const tmp = res?.data.response.body.items.item;
 
@@ -86,7 +85,6 @@ export const weatherApiFetchTest = async (currentLocation: string) => {
     return elem.category === "SKY";
   });
 
-  // 추출할 인덱스 배열
   const indicesToExtract = [0, 23, 47];
   const weatherCode = indicesToExtract.map((index) => sky[index].fcstValue);
 
