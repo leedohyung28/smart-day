@@ -94,8 +94,8 @@ const login = (req, res) => {
       );
 
       res.cookie("access_token", access_token, {
-        httpOnly: true,
-        secure: false,
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
         sameSite: "None",
       });
 
