@@ -70,7 +70,6 @@ https://wonseungteamproject-smartday.netlify.app/
 ┣ 📂models              // SQL 함수 관리 폴더
 ┣ 📂node_modules
 ┣ 📂routes              // 경로 관리
-┣ 📜.env
 ┣ 📜.gitignore
 ┣ 📜.prettierrc
 ┣ 📜app.js
