@@ -4,7 +4,7 @@ import { DailyTodo } from "../../../../store/todoStore";
 import useTodoScheduleStore from "../../../../store/todoScheduleStore";
 
 const DayTodoModal = ({ id, due_date, title }: DailyTodo) => {
-  const { setSelectedTodoId } = useTodoScheduleStore();
+  const { setSelectedTodoId } = useTodoScheduleStore((state) => state.actions);
 
   const handelOnClickTodo = () => {
     setSelectedTodoId(id);

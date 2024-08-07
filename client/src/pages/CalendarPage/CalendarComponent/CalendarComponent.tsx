@@ -47,7 +47,7 @@ const CalendarComponent = () => {
   const { currentLocation } = useUserInfoStore();
   const { todolist, isHaveTask } = useCalendarPageStore();
   const { setIsHaveTask, setTodolist } = useCalendarPageStore((state) => state.actions);
-  const actions = useDailyScheduleStore((state) => state.actions);
+  const { setDate } = useDailyScheduleStore((state) => state.actions);
   const { taskModal, todoScheduleModal, dayModal } = useModalStore();
   const weatherData = useWeatherStore((state) => state.weatherData);
   const fetchWeather = useFetchThreeDayWeathers();
@@ -206,7 +206,7 @@ const CalendarComponent = () => {
   };
 
   const clickDay = (nowDate: Date) => {
-    actions.setDate(nowDate);
+    setDate(nowDate);
     toggleDayModal();
   };
 

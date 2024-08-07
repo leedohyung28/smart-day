@@ -28,7 +28,8 @@ import dayjs from "dayjs";
 import { ko } from "date-fns/locale";
 
 const TodoScheduleModal = () => {
-  const { todoSchedule, setSelectedTodoId, updateTodoSchedule } = useTodoScheduleStore();
+  const { todoSchedule } = useTodoScheduleStore();
+  const { updateTodoSchedule, setSelectedTodoId } = useTodoScheduleStore((state) => state.actions);
 
   const [title, setTitle] = useState(todoSchedule.title);
   const [detail, setDetail] = useState(todoSchedule.details);
@@ -48,8 +49,6 @@ const TodoScheduleModal = () => {
       }
     };
     fetchTodoInfo();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todoSchedule.selectedTodoId]);
 
   const handleSaveButton = async () => {

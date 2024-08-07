@@ -13,7 +13,7 @@ interface ScheduleStore {
     addSchedule: (newSchedule: Schedule) => void;
     updateSchedule: (index: number, updateSchedule: Schedule) => void;
     removeSchedule: (index: number) => void;
-    clearSchedule: () => void;
+    clearSchedules: () => void;
   };
 }
 
@@ -32,7 +32,7 @@ const scheduleStore: StateCreator<ScheduleStore> = (set) => ({
       set((state) => ({
         schedules: state.schedules.filter((_, i) => i !== index),
       })),
-    clearSchedule: () =>
+    clearSchedules: () =>
       set(() => ({
         schedules: [],
       })),

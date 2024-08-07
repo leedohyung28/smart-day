@@ -24,16 +24,16 @@ import { useWeatherStore } from "../../../store/weatherStore";
 const Header = () => {
   const userId = useUserInfoStore((state) => state.userId);
   const nickname = useUserInfoStore((state) => state.nickname);
-  const actions = useUserInfoStore((state) => state.actions);
+  const { setUserId, setNickname } = useUserInfoStore((state) => state.actions);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const setLoginRedirectPath = useModalStore((state) => state.actions.setLoginRedirectPath);
+  const { setLoginRedirectPath } = useModalStore((state) => state.actions);
   const loginRedirectPath = useModalStore((state) => state.loginRedirectPath);
 
-  const clearTodo = useDailyTodoStore((state) => state.actions.clearTodo);
-  const clearSchedule = useDailyScheduleStore((state) => state.actions.clearSchedule);
-  const clear = useScheduleStore((state) => state.actions.clearSchedule);
-  const clearWeatherData = useWeatherStore((state) => state.actions.clearWeatherData);
-  const clearLocation = useUserInfoStore((state) => state.actions.clearCurrentLocation);
+  const { clearTodo } = useDailyTodoStore((state) => state.actions);
+  const { clearSchedule } = useDailyScheduleStore((state) => state.actions);
+  const { clearSchedules } = useScheduleStore((state) => state.actions);
+  const { clearWeatherData } = useWeatherStore((state) => state.actions);
+  const { clearCurrentLocation } = useUserInfoStore((state) => state.actions);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -79,13 +79,13 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await requestLogoutAPI();
-      actions.setUserId(null);
-      actions.setNickname(null);
+      setUserId(null);
+      setNickname(null);
       clearTodo();
       clearSchedule();
-      clear();
+      clearSchedules();
       clearWeatherData();
-      clearLocation();
+      clearCurrentLocation();
       navigate("/");
     } catch (err) {
       console.error(err);

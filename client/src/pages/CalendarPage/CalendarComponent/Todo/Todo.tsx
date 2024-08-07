@@ -15,7 +15,7 @@ interface TodoProps {
 const Todo = ({ id, dueDate, isCheck, title }: TodoProps) => {
   const [isChecked, setIsChecked] = useState(isCheck);
   const { toggleTodoIsDone } = useCalendarPageStore((state) => state.actions);
-  const setSelectedTodoId = useTodoScheduleStore((state) => state.setSelectedTodoId);
+  const { setSelectedTodoId } = useTodoScheduleStore((state) => state.actions);
 
   const fetchToggleTodos = async (id: number) => {
     try {

@@ -9,7 +9,7 @@ const getFormattedDate = (date: Date) => {
 };
 
 export const useFetchThreeDayWeathers = () => {
-  const actions = useWeatherStore((state) => state.actions);
+  const { setWeatherData } = useWeatherStore((state) => state.actions);
   const fetchWeather = async (currentLocation: string, today: Date) => {
     try {
       const result = await weatherApiFetchTest(currentLocation);
@@ -23,7 +23,7 @@ export const useFetchThreeDayWeathers = () => {
           weatherData[formattedDate] = Number(value);
         });
 
-        actions.setWeatherData(weatherData);
+        setWeatherData(weatherData);
       }
     } catch (error) {
       console.error("오류 발생:", error);

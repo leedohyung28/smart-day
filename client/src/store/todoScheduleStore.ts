@@ -14,9 +14,11 @@ interface todoSchedule {
 
 interface TodoScheduleStore {
   todoSchedule: todoSchedule;
-  updateTodoSchedule: (date: string, title: string, details: string) => void;
-  setSelectedTodoId: (todoId: number | null) => void;
-  setDueDate: (due_date: string) => void;
+  actions: {
+    updateTodoSchedule: (date: string, title: string, details: string) => void;
+    setSelectedTodoId: (todoId: number | null) => void;
+    setDueDate: (due_date: string) => void;
+  };
 }
 
 const todoScheduleStore: StateCreator<TodoScheduleStore> = (set) => ({
@@ -27,32 +29,34 @@ const todoScheduleStore: StateCreator<TodoScheduleStore> = (set) => ({
     selectedTodoId: null,
   },
 
-  updateTodoSchedule: (date, title, details) =>
-    set((state) => ({
-      todoSchedule: {
-        ...state.todoSchedule,
-        date,
-        title,
-        details,
-      },
-    })),
-  setSelectedTodoId: (todoId: number | null) => {
-    set((state) => ({
-      todoSchedule: {
-        ...state.todoSchedule,
-        selectedTodoId: todoId,
-      },
-    }));
-  },
-  setDueDate: (due_date: string) => {
-    set((state) => ({
-      todoSchedule: {
-        ...state.todoSchedule,
-        title: "",
-        details: "",
-        date: due_date,
-      },
-    }));
+  actions: {
+    updateTodoSchedule: (date, title, details) =>
+      set((state) => ({
+        todoSchedule: {
+          ...state.todoSchedule,
+          date,
+          title,
+          details,
+        },
+      })),
+    setSelectedTodoId: (todoId: number | null) => {
+      set((state) => ({
+        todoSchedule: {
+          ...state.todoSchedule,
+          selectedTodoId: todoId,
+        },
+      }));
+    },
+    setDueDate: (due_date: string) => {
+      set((state) => ({
+        todoSchedule: {
+          ...state.todoSchedule,
+          title: "",
+          details: "",
+          date: due_date,
+        },
+      }));
+    },
   },
 });
 

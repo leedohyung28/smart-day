@@ -4,11 +4,11 @@ import { Schedule } from "../../../store/scheduleStore";
 import useDailyScheduleStore from "../../../store/dayStore";
 
 const DailyScheduleContainer = ({ start_date, titles }: Schedule) => {
-  const actions = useDailyScheduleStore((state) => state.actions);
+  const { setDate } = useDailyScheduleStore((state) => state.actions);
 
   const handleClick = () => {
     const date = new Date(start_date);
-    actions.setDate(date);
+    setDate(date);
     toggleDayModal();
   };
 

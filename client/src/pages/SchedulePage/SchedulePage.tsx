@@ -37,7 +37,7 @@ const SchedulePage = () => {
     return date;
   });
   const schedules = useScheduleStore((state) => state.schedules);
-  const actions = useScheduleStore((state) => state.actions);
+  const { clearSchedules, addSchedule } = useScheduleStore((state) => state.actions);
   const {
     loginModal,
     userEditModal,
@@ -59,10 +59,10 @@ const SchedulePage = () => {
 
     const fetchSchedules = async () => {
       try {
-        actions.clearSchedule();
+        clearSchedules();
         const data = await getSchedulesAPI(startDate, endDate);
         data.forEach((item: Schedule) => {
-          actions.addSchedule(item);
+          addSchedule(item);
         });
       } catch (error) {
         console.error("Failed to fetch schedules:", error);
@@ -72,7 +72,7 @@ const SchedulePage = () => {
       fetchSchedules();
     }
     hasPageBeenRendered.current["effect"] = true;
-  }, [startDate, endDate, actions, userId, navigate, taskModal, todoScheduleModal]);
+  }, [startDate, endDate, userId, navigate, taskModal, todoScheduleModal, clearSchedules, addSchedule]);
 
   const handleStartDateChange = (date: Date | null) => {
     if (date) {

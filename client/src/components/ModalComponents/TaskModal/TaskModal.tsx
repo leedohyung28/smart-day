@@ -40,7 +40,7 @@ const TaskModal = () => {
 
   const selectedDate = useUserInfoStore((state) => state.selectedDate);
   const { addTask, updateTask, deleteTask } = useMainStore((state) => state.actions);
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
+  const { setIsNewTask } = useTaskStore((state) => state.actions);
 
   const [startDate, setStartDate] = useState(() => {
     if (selectedDate) {

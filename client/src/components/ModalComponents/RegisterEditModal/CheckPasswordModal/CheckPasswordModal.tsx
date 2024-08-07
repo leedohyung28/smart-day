@@ -20,7 +20,7 @@ const CheckPasswordModal = () => {
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(<FaEyeSlash />);
   const [password, setPassword] = useState("");
-  const actions = useChangeUserInfoStore((state) => state.actions);
+  const { setNickname } = useChangeUserInfoStore((state) => state.actions);
 
   const handleToggle = () => {
     setType((prevType) => (prevType === "password" ? "text" : "password"));
@@ -31,7 +31,7 @@ const CheckPasswordModal = () => {
     try {
       const res = await getUserInfoAPI(password);
       if (res) {
-        actions.setNickname(res.nickname);
+        setNickname(res.nickname);
         togglePWCheckModal();
         toggleUserEditModal();
       }

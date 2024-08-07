@@ -19,8 +19,7 @@ type TTask = {
 
 const Task = ({ id, taskIndex, listIndex, date, startTime, endTime, title, detail }: TTask) => {
   const { deleteTask } = useMainStore((state) => state.actions);
-  const updateTask = useTaskStore((state) => state.updateTask);
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
+  const { setIsNewTask, updateTask } = useTaskStore((state) => state.actions);
   const { initializeSelectedDate } = useUserInfoStore((state) => state.actions);
 
   const clickTaskDiv = () => {

@@ -26,9 +26,7 @@ const DatepickerModal = () => {
     setSelectedDate: state.actions.setSelectedDate,
     initializeSelectedDate: state.actions.initializeSelectedDate,
   }));
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
-  const updateTask = useTaskStore((state) => state.updateTask);
-
+  const { setIsNewTask, updateTask } = useTaskStore((state) => state.actions);
   const handleDateChange = (date: Date | null) => {
     if (date) {
       setStartDate(date);

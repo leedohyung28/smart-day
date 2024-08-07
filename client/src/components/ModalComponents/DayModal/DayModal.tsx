@@ -63,13 +63,12 @@ const DayModal = () => {
 
   const dailyTodos = useDailyTodoStore((state) => state.dailyTodo);
 
-  const scheduleActions = useDailyScheduleStore((state) => state.actions);
-  const todoActions = useDailyTodoStore((state) => state.actions);
+  const { clearSchedule, addSchedule } = useDailyScheduleStore((state) => state.actions);
+  const { clearTodo, addTodo } = useDailyTodoStore((state) => state.actions);
 
-  const updateTask = useTaskStore((state) => state.updateTask);
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
+  const { setIsNewTask, updateTask } = useTaskStore((state) => state.actions);
 
-  const { setDueDate } = useTodoScheduleStore();
+  const { setDueDate } = useTodoScheduleStore((state) => state.actions);
   const weatherData = useWeatherStore((state) => state.weatherData);
   const [weatherIcon, setWeatherIcon] = useState(<TbCloudQuestion />);
 
@@ -81,15 +80,15 @@ const DayModal = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        scheduleActions.clearSchedule();
-        todoActions.clearTodo();
+        clearSchedule();
+        clearTodo();
         const scheduleData = await getDailySchedules(date);
         scheduleData.forEach((item: DailySchedule) => {
-          scheduleActions.addSchedule(item);
+          addSchedule(item);
         });
         const todoData = await getDailyTodos(date);
         todoData.forEach((item: DailyTodo) => {
-          todoActions.addTodo(item);
+          addTodo(item);
         });
       } catch (error) {
         console.error("Failed to fetch schedules and todos:", error);
@@ -99,7 +98,7 @@ const DayModal = () => {
       fetchData();
     }
     hasPageBeenRendered.current["effect"] = true;
-  }, [date, todoActions, scheduleActions, todoScheduleModal, taskModal]);
+  }, [date, todoScheduleModal, taskModal, clearSchedule, clearTodo, addSchedule, addTodo]);
 
   useEffect(() => {
     const dateString = dayjs(date).format("YYYY-MM-DD");

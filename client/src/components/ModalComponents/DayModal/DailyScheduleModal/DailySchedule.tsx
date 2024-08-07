@@ -6,9 +6,8 @@ import { useUserInfoStore } from "../../../../store/userInfoStore";
 import dayjs from "dayjs";
 
 const DaySchedule = ({ id, title, detail, start_date, start_time, end_time }: DailySchedule) => {
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
+  const { setIsNewTask, updateTask } = useTaskStore((state) => state.actions);
   const { initializeSelectedDate } = useUserInfoStore((state) => state.actions);
-  const updateTask = useTaskStore((state) => state.updateTask);
 
   const clickTaskDiv = () => {
     const nowTask = {

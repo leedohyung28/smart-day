@@ -12,7 +12,7 @@ type TodoProps = {
 };
 
 const Todo = ({ id, completed, title, dueDate, onCheckboxChange }: TodoProps) => {
-  const { setSelectedTodoId } = useTodoScheduleStore();
+  const { setSelectedTodoId } = useTodoScheduleStore((state) => state.actions);
 
   return (
     <div className={todoContainer}>

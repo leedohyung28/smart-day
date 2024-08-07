@@ -56,8 +56,7 @@ const weatherIcons = [
 const List = ({ listIndex, tasks }: TaskList) => {
   const dayOfTheWeek = ["일", "월", "화", "수", "목", "금", "토"];
   const { standardDate } = useMainStore();
-  const updateTask = useTaskStore((state) => state.updateTask);
-  const setIsNewTask = useTaskStore((state) => state.setIsNewTask);
+  const { setIsNewTask, updateTask } = useTaskStore((state) => state.actions);
   const nowDate = dayjs(standardDate).add(listIndex, "day");
   const weatherData = useWeatherStore((state) => state.weatherData);
 
