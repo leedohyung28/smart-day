@@ -100,13 +100,16 @@ https://wonseungteamproject-smartday.netlify.app/
 
 <br/>
 
-## 🗺 프로젝트 설계도
+## 🗺 프로젝트 설계도 및 발표 영상
 
 ### FrontEnd 초기 Figman 설계도
 ![image](https://github.com/user-attachments/assets/66f90266-8726-4ea1-acad-8183f88ab627)
 
 ### BackEnd 테이블
 ![image](https://github.com/user-attachments/assets/9d5b0b97-57f2-43fd-a33e-869138b1cc72)
+
+### 발표 영상
+https://www.youtube.com/watch?v=XS_ZUwud-Hw
 
 <br/>
 
